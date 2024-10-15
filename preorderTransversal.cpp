@@ -32,7 +32,7 @@ void preorder(node* root){
 }
 int main() {
     node* root = create_tree();
-    cout<<"Inorder traversal: "<<endl;
+    cout<<"Preorder traversal: "<<endl;
     preorder(root);
     
     return 0;
