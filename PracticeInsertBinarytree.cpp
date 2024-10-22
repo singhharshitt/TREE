@@ -109,6 +109,54 @@ int main(){
 
 //POSTORDER;
 
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* left;
+    node* right;
+    node(int value){
+        data= value;
+        left= right=nullptr;
+    }
+};
+node* insert(node* root, int value){
+    if(root== nullptr){
+        return new node(value);
+    }
+    if(value<root->data){
+        root->left= insert(root->left, value);
+    }else{
+        root->right= insert(root->right, value);
+    }
+    
+    return root;
+}
+
+void postorder(node* root){
+    if(root!=nullptr){
+        postorder(root->left);
+        postorder(root->right);
+        cout<<root->data<<" ";
+    }
+}
+
+int main(){
+    node* root= nullptr;
+    int n;
+    cout<<"Enter the number of elements in the tree: ";
+    cin>>n;
+    cout<<"Enter elements: ";
+    for(int i=0; i<n; i++){
+        int element;
+        cin>>element;
+        root=insert(root, element);
+    }
+    cout<<"Post Order: ";
+    postorder(root);
+    return 0;
+}
+
 
 
 
