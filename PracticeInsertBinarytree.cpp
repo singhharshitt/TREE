@@ -1,5 +1,6 @@
-
-// Online C++ compiler to run C++ program online
+//This program has all transversal i.e inorder, preorder, and post order
+//I HAVE 
+// INORDER
 #include <iostream>
 using namespace std;
 struct node{
@@ -53,3 +54,63 @@ int main() {
     
     return 0;
 }
+//PREORDER
+
+#include <iostream>
+using namespace std;
+struct node{
+    int data;
+    node* left;
+    node* right;
+    node(int value){
+        data= value;
+        left= right= nullptr;
+    }
+};
+
+node* insert(node* root, int value){
+    if(root==nullptr){
+        return new node(value);
+    }
+    
+    if(value<root->data){
+        root->left= insert(root->left, value);
+    }else{
+        root->right= insert(root->right, value);
+    }
+    return root;
+}
+
+//preorder==== root->left->right
+void preorder(node* root){
+    if(root!=nullptr){
+        cout<<root->data<<" ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+int main(){
+    node* root= nullptr;
+    int n;
+    cout<<"Enter number of tree contains: ";
+    cin>>n;
+    cout<<"Enter elements: ";
+    for(int i=0; i<n; i++){
+        int element;
+        cin>>element;
+        root= insert(root, element);
+    }
+    cout<<"Pre Order: ";
+    preorder(root);
+    return 0;
+}
+
+
+//POSTORDER;
+
+
+
+
+
+
